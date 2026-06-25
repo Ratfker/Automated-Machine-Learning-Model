@@ -10,7 +10,7 @@ from pathlib import Path
 from datetime import datetime
 import traceback
 
-# ─── PAGE CONFIG ──────────────────────────────────────────────────────
+
 st.set_page_config(
     page_title="AutoML Pipeline v2",
     page_icon="🚀",
@@ -18,7 +18,6 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# ─── CUSTOM STYLING ───────────────────────────────────────────────────
 st.markdown("""
 <style>
     .status-box {
@@ -34,7 +33,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# ─── SESSION STATE INITIALIZATION ─────��───────────────────────────────
+
 if "pipeline_trained" not in st.session_state:
     st.session_state.pipeline_trained = False
     st.session_state.best_model = None
@@ -47,7 +46,6 @@ if "pipeline_trained" not in st.session_state:
     st.session_state.target_col = None
     st.session_state.df = None
 
-# ─── HEADER ───────────────────────────────────────────────────────────
 st.markdown("""
 <div style="text-align: center; padding: 2rem 0;">
     <h1>🚀 AutoML Pipeline v2</h1>
@@ -56,7 +54,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# ─── SIDEBAR NAVIGATION ───────────────────────────────────────────────
+
 st.sidebar.title("📊 Navigation")
 
 page = st.sidebar.radio(
@@ -73,7 +71,7 @@ with st.sidebar:
     if st.session_state.pipeline_trained:
         st.write(f"**Best Model:** {st.session_state.best_name}")
 
-# ─── ROUTE TO PAGES ───────────────────────────────────────────────────
+
 if page == "🏠 Training":
     from pages import training
     training.show_training_page()
